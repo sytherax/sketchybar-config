@@ -17,7 +17,7 @@ brew install sketchybar
 brew services start sketchybar
 ```
 
-Install this config with it's dependencies
+Install this config with its dependencies
 
 ```bash
 # brew install yabai # Recommended only if you already have a config
