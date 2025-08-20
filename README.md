@@ -45,5 +45,4 @@ For yabai users : `yabai -m config external_bar all:36:0`
 <img width="2940" height="1912" alt="Screenshot 2025-08-09 at 18 49 42" src="https://github.com/user-attachments/assets/23066c77-1b31-4372-a737-8bf450af1d80" />
 <img width="2940" height="1912" alt="Screenshot 2025-08-09 at 18 55 12" src="https://github.com/user-attachments/assets/0406413d-4468-4ba7-b55d-1c59e7e52cfb" />
 
-
 https://github.com/user-attachments/assets/c9db52a4-d7fe-4daa-a904-cd201476556c
