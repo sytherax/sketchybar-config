@@ -1,5 +1,12 @@
 #!/bin/bash
+export RELPATH=$(dirname $0)/../..;
 WIDTH=100
+
+if which menubar;then
+  menubar=$(which menubar)
+else
+  menubar=$RELPATH/menubar
+fi
 
 detail_on() {
   sketchybar --animate tanh 30 --set volume slider.width=$WIDTH
@@ -18,7 +25,7 @@ toggle_detail() {
       detail_off
     fi
   else
-    $RELPATH/menubar -s "Control Center,Sound"
+    $menubar -s "Control Center,Sound"
   fi
 }
 
