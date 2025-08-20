@@ -16,13 +16,13 @@ brew services start sketchybar
 ```sh
 brew install media-control macmon image-magick
 brew install --cask SF-Pro sketchybar-app-font
-
-mkdir -p ~/.config
-mkdir -p ~/.config/sketchybar
-cd ~/.config/sketchybar
-git clone 
 # brew install yabai # Recommended only if you already have a config
 
+mkdir -p ~/.config
+cd ~/.config/
+git clone https://www.github.com/Kcraft059/sketchybar
+
+sketchybar --reload
 ```
 
 ## A little demonstration of the functionalities :
