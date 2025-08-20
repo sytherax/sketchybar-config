@@ -2,6 +2,8 @@
 
 This is a config I made which aggregate functionnality and aesthetics.
 
+See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussioncomment-14058252
+
 > [!WARNING] 
 > Some of the functionnalities of the bar are not working currently in MacOS Tahoe.
 
