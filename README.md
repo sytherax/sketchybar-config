@@ -11,7 +11,7 @@ See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussionc
 
 Install sketchybar
 
-```shell
+```bash
 brew tap FelixKratz/formulae
 brew install sketchybar
 brew services start sketchybar
@@ -19,7 +19,7 @@ brew services start sketchybar
 
 Install this config with it's dependencies
 
-```shell
+```bash
 # brew install yabai # Recommended only if you already have a config
 # brew tap Waydabber/betterdisplay-cli
 # brew install betterdisplaycli # Recommended if using better display Configure [here](<plugins/display/script.sh>)
