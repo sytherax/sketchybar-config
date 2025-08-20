@@ -9,11 +9,15 @@ See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussionc
 
 ## Install :
 
+Install sketchybar
+
 ```sh
 brew tap FelixKratz/formulae
 brew install sketchybar
 brew services start sketchybar
 ```
+
+Install this config with it's dependencies
 
 ```sh
 brew install media-control macmon image-magick
