@@ -23,6 +23,7 @@ Install this config with it's dependencies
 brew install media-control macmon image-magick
 brew install --cask SF-Pro sketchybar-app-font
 # brew install yabai # Recommended only if you already have a config
+# brew tap Waydabber/betterdisplay-cli # Recommended if using better display Configure [here](<plugins/display/script.sh>)
 
 mkdir -p ~/.config
 cd ~/.config/
