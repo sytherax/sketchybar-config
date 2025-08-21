@@ -27,8 +27,7 @@ Install this config with its dependencies
 
 ```bash
 # brew install yabai # Recommended only if you already have a config
-# brew tap Waydabber/betterdisplay-cli
-# brew install betterdisplaycli # Recommended if using better display Configure [here](<plugins/display/script.sh>)
+# brew install brew install waydabber/betterdisplay/betterdisplaycli # Recommended if using better display Configure [here](<plugins/display/script.sh>)
 # (Also recommended for battery control - when clicking battery icon : https://github.com/mhaeuser/Battery-Toolkit)
 
 brew install media-control macmon image-magick
