@@ -36,7 +36,7 @@ brew install --cask SF-Pro sketchybar-app-font
 
 mkdir -p ~/.config
 cd ~/.config/
-git clone https://www.github.com/Kcraft059/sketchybar
+git clone https://www.github.com/Kcraft059/sketchybar-config sketchybar
 
 sketchybar --reload
 ```
