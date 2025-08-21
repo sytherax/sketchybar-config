@@ -1,12 +1,14 @@
 #!/bin/bash
 # sketchybar --query default_menu_items
 menucontrols=(
-  "Control__Center,UserSwitcher"
+  #"Control__Center,UserSwitcher"
   "Control__Center,Bluetooth"
 )
 
 menuitems=(
   "pkgs"
+  "user"
+  "notif"
 )
 
 SCRIPT_CLICK_SEPARATOR_MORE="export PATH=$PATH; \

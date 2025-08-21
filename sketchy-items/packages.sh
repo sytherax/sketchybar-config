@@ -13,8 +13,10 @@ pkgs=(
   label=""
   label.font="$FONT:Semibold:10.0"
   label.padding_left=$INNER_PADDINGS
-  label.padding_right=$OUTER_PADDINGS
-  update_freq=120
+  label.padding_right=6
+  padding_left=$INNER_PADDINGS
+  padding_right=$OUTER_PADDINGS
+  update_freq=0
   updates=when_shown
 )
 
