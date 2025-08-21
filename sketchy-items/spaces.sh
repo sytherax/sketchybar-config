@@ -47,7 +47,7 @@ separator=(
   label.drawing=off
   icon.font="$FONT:Semibold:14.0"
   associated_display=active
-  click_script='yabai -m space --create && sketchybar --trigger space_change'
+  click_script='export PATH=$PATH; yabai -m space --create && sketchybar --trigger space_change'
   icon.color=$SUBTLE_MOON
   script="$SCRIPT_SPACE_WINDOWS"
 )
