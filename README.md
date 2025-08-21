@@ -37,6 +37,8 @@ sketchybar --reload
 
 For yabai users : `yabai -m config external_bar all:36:0`
 
+For Nix-Darwin users see : https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
+
 > [!NOTE]
 > Aerospace isn't supported, if you wanna implement it see : https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussioncomment-14081291
 
