@@ -10,7 +10,7 @@ if [ "$SENDER" = "space_windows_change" ]; then
   if [ "${apps}" != "" ]; then
     while read -r app
     do
-      icon_strip+=" $(__icon_map "$INFO"; echo $icon_result)"
+      icon_strip+=" $(__icon_map "$app"; echo $icon_result)"
     done <<< "${apps}"
     sketchybar --set space.$space label="$icon_strip" label.drawing=on #background.drawing=on
   else
