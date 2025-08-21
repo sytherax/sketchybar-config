@@ -1,9 +1,8 @@
 # Utility Bar - Rosé Pine Moon
 <div align=center>
-<img width="650" height="40" alt="Screenshot 2025-08-21 at 12 39 13 copy" src="https://github.com/user-attachments/assets/e6ff0a05-796b-40f2-84db-5974c2f89a15" />
-<img width="650" height="40" alt="Screenshot 2025-08-21 at 12 39 39 copy" src="https://github.com/user-attachments/assets/14e6a61d-6516-4824-88b6-8eaff2309d0a" />
-<img width="650" height="40" alt="Screenshot 2025-08-21 at 12 39 13" src="https://github.com/user-attachments/assets/2ed03b45-c81a-4b98-89c4-a232ff65e5fe" />
-<img width="650" height="40" alt="Screenshot 2025-08-21 at 12 39 39" src="https://github.com/user-attachments/assets/a3b26361-1ab1-49d2-ad14-cb986171d391" />
+<img width="1470" height="40" alt="Screenshot 2025-08-21 at 12 39 13" src="https://github.com/user-attachments/assets/230c1063-cb96-4686-9745-270335e650e5" />
+<img width="1470" height="40" alt="Screenshot 2025-08-21 at 12 39 39" src="https://github.com/user-attachments/assets/c34be030-27f3-4bf4-a7df-d1119208c824" />
+
 </div>
 
 
