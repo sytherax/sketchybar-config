@@ -11,7 +11,7 @@ success() { echo -e "${GREEN}✔ $1${RESET}"; }
 log "clone sketchybar-config repository..."
 CONFIG_DIR="$HOME/.config"
 rm -rf "$CONFIG_DIR/sketchybar"
-git clone --depth 1 https://www.github.com/Kcraft059/sketchybar-config "CONFIG_DIR/sketchybar"
+git clone --depth 1 https://github.com/Kcraft059/sketchybar-config "CONFIG_DIR/sketchybar"
 success "cloned sketchybar-config repository"
 
 log "Installing SketchyBar dependencies..."
