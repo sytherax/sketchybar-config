@@ -17,7 +17,7 @@ success "cloned sketchybar-config repository"
 log "Installing SketchyBar dependencies..."
 brew tap FelixKratz/formulae
 brew install sketchybar media-control macmon imagemagick
-brew install --cask sf-symbols font-sketchybar-app-font SF-Pro
+brew install --cask sf-symbols font-sketchybar-app-font font-sf-pro
 success "installed dependencies..."
 
 log "get latest icon map ..."
