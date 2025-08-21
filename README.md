@@ -30,8 +30,8 @@ Install this config with its dependencies
 # brew install brew install waydabber/betterdisplay/betterdisplaycli # Recommended if using better display Configure [here](<plugins/display/script.sh>)
 # (Also recommended for battery control - when clicking battery icon : https://github.com/mhaeuser/Battery-Toolkit)
 
-brew install media-control macmon image-magick
-brew install --cask SF-Pro sketchybar-app-font
+brew install media-control macmon imagemagick
+brew install --cask font-SF-Pro font-sketchybar-app-font
 
 mkdir -p ~/.config
 cd ~/.config/
