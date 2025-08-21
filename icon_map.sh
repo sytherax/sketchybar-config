@@ -419,6 +419,5 @@ else
       icon_result=":default:"
       ;;
     esac
-    echo $icon_result
   }
 fi
