@@ -1,5 +1,5 @@
 #!/bin/bash
-if ! [ -f ~/.config/sketchybar/dyn-icon_map.sh ]; then 
+if [ -f ~/.config/sketchybar/dyn-icon_map.sh ]; then 
   source ~/.config/sketchybar/dyn-icon_map.sh
 else 
   __icon_map() {
