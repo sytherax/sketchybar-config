@@ -4,6 +4,7 @@ source $RELPATH/colors.sh
 
 ICON_HOTSPOT=􀉤
 ICON_WIFI=􀙇
+ICON_WIFI_ERROR=􀙥
 ICON_WIFI_OFF=􀙈
 
 getname() {
@@ -28,6 +29,13 @@ getname() {
     ICON=$ICON_WIFI_OFF
     ICON_COLOR=$LOVE_MOON
     LABEL="off"
+  fi
+
+  PUBLIC_IP=$(curl -m 10 https://ipinfo.io 2>/dev/null 1>&2; echo $?)
+  
+  if [[ $PUBLIC_IP != "0" ]];then
+    ICON=$ICON_WIFI_ERROR
+    ICON_COLOR=$GOLD_MOON
   fi
 
   wifi=(

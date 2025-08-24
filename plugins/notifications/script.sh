@@ -5,7 +5,7 @@ source $RELPATH/colors.sh
 if [ -f ~/.github_token ]; then
 GITHUB_TOKEN="$(cat ~/.github_token)" # Should be a PAT with only notification reading permissions
 
-  notifications="$(curl -s \
+  notifications="$(curl -m 15 -s \
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: Bearer $GITHUB_TOKEN" \
     https://api.github.com/notifications )"
