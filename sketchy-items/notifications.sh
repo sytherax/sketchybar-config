@@ -23,4 +23,4 @@ notif=(
 
 sketchybar --add item moremenu.notif right \
   --set moremenu.notif "${notif[@]}" \
-  --subscribe moremenu.notif more-menu-update
+  --subscribe moremenu.notif more-menu-update wifi_change
