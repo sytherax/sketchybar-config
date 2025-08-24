@@ -12,6 +12,7 @@ getname() {
   WIFI="$(system_profiler SPAirPortDataType | awk '/Current Network/ {getline;$1=$1; gsub(":",""); print;exit}')" #$(ipconfig getsummary $WIFI_PORT | awk -F': ' '/ SSID : / {print $2}')
   HOTSPOT=$(ipconfig getsummary $WIFI_PORT | grep sname | awk '{print $3}')
   IP_ADDRESS=$(scutil --nwi | grep address | sed 's/.*://' | tr -d ' ' | head -1)
+  PUBLIC_IP=$(curl -m 2 https://ipinfo.io 2>/dev/null 1>&2; echo $?)
 
   if [[ $HOTSPOT != "" ]]; then
     ICON=$ICON_HOTSPOT
@@ -31,12 +32,13 @@ getname() {
     LABEL="off"
   fi
 
-  PUBLIC_IP=$(curl -m 10 https://ipinfo.io 2>/dev/null 1>&2; echo $?)
-  
-  if [[ $PUBLIC_IP != "0" ]];then
+  if [[ $PUBLIC_IP != "0" && $LABEL != "off" ]];then
     ICON=$ICON_WIFI_ERROR
-    ICON_COLOR=$GOLD_MOON
+    ICON_COLOR=$SUBTLE_MOON
+    LABEL="$WIFI (no internet)"
   fi
+  
+
 
   wifi=(
     icon=$ICON
