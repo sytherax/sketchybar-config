@@ -17,7 +17,9 @@ See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussionc
 
 With the installer :
 
-`bash -c "$(curl -fsSL https://raw.githubusercontent.com/Kcraft059/sketchybar-config/main/install.sh)"`
+```sh
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Kcraft059/sketchybar-config/main/install.sh)"
+```
 
 <details>
 
