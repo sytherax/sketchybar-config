@@ -15,6 +15,14 @@ See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussionc
 
 ## Install :
 
+### With the installer :
+
+`bash -c "$(curl -fsSL https://raw.githubusercontent.com/Kcraft059/sketchybar-config/main/install.sh)"`
+
+<details>
+
+<summary>Manual install:</summary>
+
 Install sketchybar
 
 ```bash
@@ -41,6 +49,8 @@ sketchybar --reload
 ```
 
 For yabai users : `yabai -m config external_bar all:36:0`
+
+</details>
 
 For Nix-Darwin users see : https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
 
