@@ -49,6 +49,23 @@ mkdir -p "$(dirname "$output_path")"
 curl -fsSL -o "$output_path" "$font_url" || error "Failed to download dyn-icon_map.sh."
 success "Downloaded dyn-icon_map.sh → $output_path"
 
+### GitHub Notifications Setup
+read -rp "$(echo -e "${YELLOW}➤ Do you want to enable GitHub notifications in SketchyBar? (y/n): ${RESET}")" enable_github
+
+if [[ "$enable_github" =~ ^[Yy]$ ]]; then
+  read -rsp "$(echo -e "${YELLOW}➤ Please enter your Classic GitHub Token: ${RESET}")" github_token
+  echo
+  if [[ -n "$github_token" ]]; then
+    echo "$github_token" > "$HOME/.github_token"
+    chmod 600 "$HOME/.github_token"
+    success "GitHub token saved to ~/.github_token (permissions set to 600)."
+  else
+    error "No token entered. Skipping GitHub notifications setup."
+  fi
+else
+  log "Skipped GitHub notifications setup."
+fi
+
 ### Restart SketchyBar
 log "Restarting SketchyBar..."
 brew services restart sketchybar
