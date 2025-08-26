@@ -21,7 +21,7 @@ See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussionc
 
 <details>
 
-<summary>Manual install:</summary>
+<summary>### Manual install:</summary>
 
 Install sketchybar
 
