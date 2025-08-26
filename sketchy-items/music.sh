@@ -4,11 +4,7 @@ ARTWORK_MARGIN=5
 TITLE_MARGIN=11
 INFO_WIDTH=80
 
-if which menubar 2>/dev/null 1>&2;then
-  menubar=$(which menubar)
-else
-  menubar=$RELPATH/menubar
-fi
+command -v 'menubar' 2>/dev/null 1>&2 || alias menubar="$RELPATH/menubar"
 
 SCRIPT_MUSIC="export PATH=$PATH; $RELPATH/plugins/music/script-artwork.sh $ARTWORK_MARGIN $BAR_HEIGHT #SKETCHYBAR_MEDIASTREAM#"
 
@@ -16,7 +12,7 @@ SCRIPT_CLICK_MUSIC_ARTWORK="export PATH=$PATH;  media-control toggle-play-pause"
 
 SCRIPT_MUSIC_TITLE="export PATH=$PATH; $RELPATH/plugins/music/script-title.sh"
 
-SCRIPT_CLICK_MUSIC_TITLE="export PATH=$PATH; $menubar -s \"Control Center,NowPlaying\""
+SCRIPT_CLICK_MUSIC_TITLE="export PATH=$PATH; menubar -s \"Control Center,NowPlaying\""
 
 SCRIPT_CENTER_SEP="export PATH=$PATH; $RELPATH/plugins/music/script-separator.sh"
 
@@ -81,7 +77,7 @@ music_subtitle=(
   #scroll_duration=10
   padding_left=0
   padding_right=0
-  y_offset=$(( - ($BAR_HEIGHT / 2) + $TITLE_MARGIN))
+  y_offset=$((-($BAR_HEIGHT / 2) + $TITLE_MARGIN))
 )
 
 center_separator=(
@@ -98,9 +94,9 @@ center_separator=(
 )
 
 sketchybar --add item separator_center center \
-           --set separator_center "${center_separator[@]}" \
-           --add event activities_update #\
-sketchybar --subscribe separator_center activities_update
+  --set separator_center "${center_separator[@]}" \
+  --add event activities_update \
+  sketchybar --subscribe separator_center activities_update #\
 
 sketchybar --add item music q \
   --set music "${music_artwork[@]}" \
@@ -111,4 +107,4 @@ sketchybar --add item music q \
   --subscribe music.title mouse.entered mouse.exited \
   --subscribe music.subtitle mouse.entered mouse.exited
 
-  #--add event mediachange MPMusicPlayerControllerNowPlayingItemDidChange \
+#--add event mediachange MPMusicPlayerControllerNowPlayingItemDidChange \

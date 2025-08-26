@@ -1,6 +1,6 @@
 #!/bin/bash
 list_nix_packages() {
-  for x in $(nix-store --query --requisites "$1" 2>/dev/null ); do
+  for x in $(nix-store --query --requisites "$1" 2>/dev/null); do
     if [ -d "$x" ]; then
       echo "$x"
     fi
@@ -10,12 +10,15 @@ list_nix_packages() {
     uniq |
     wc -l
 }
-packages_total=$(( $(list_nix_packages "/nix/var/nix/profiles/default") + \
-  $(list_nix_packages "/run/current-system") + \
-  $(list_nix_packages "$HOME/.nix-profile") + \
-  $(ls /opt/homebrew/Caskroom 2>/dev/null | wc -l ) + \
-  $(ls /opt/homebrew/Cellar 2>/dev/null | wc -l) + \
-  $(ls $HOME/local/Caskroom 2>/dev/null | wc -l ) + \
-  $(ls $HOME/local/Cellar 2>/dev/null | wc -l ) )) # Nix default + Nix system + Nix user
 
-sketchybar --set $NAME label="$(($packages_total - 0))"
+### Sum of all packages
+
+packages_total=$(($(list_nix_packages "/nix/var/nix/profiles/default") + \
+$(list_nix_packages "/run/current-system") + \
+$(list_nix_packages "$HOME/.nix-profile") + \
+$(ls /opt/homebrew/Caskroom 2>/dev/null | wc -l) + \
+$(ls /opt/homebrew/Cellar 2>/dev/null | wc -l) + \
+$(ls $HOME/local/Caskroom 2>/dev/null | wc -l) + \
+$(ls $HOME/local/Cellar 2>/dev/null | wc -l))) # Nix default + Nix system + Nix user
+
+sketchybar --set $NAME label="$packages_total"

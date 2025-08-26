@@ -10,7 +10,7 @@ add_separator() {
     icon.padding_right=0
   )
 
-  if [ -n "$3" ]; then
+  if [[ -n "$3" ]]; then
     separator+=(
       icon="$3"
     )

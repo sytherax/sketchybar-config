@@ -1,12 +1,8 @@
 #!/bin/bash
-if which menubar 2>/dev/null 1>&2;then
-  menubar=$(which menubar)
-else
-  menubar=$RELPATH/menubar
-fi
+command -v 'menubar' 2>/dev/null 1>&2 || alias menubar="$RELPATH/menubar"
 
 SCRIPT_USER="export PATH=$PATH; $RELPATH/plugins/currentuser/script.sh"
-SCRIPT_CLICK_USER="export PATH=$PATH; $menubar -s \"Control Center,UserSwitcher\""
+SCRIPT_CLICK_USER="export PATH=$PATH; menubar -s \"Control Center,UserSwitcher\""
 
 user=(
   icon=􀅷

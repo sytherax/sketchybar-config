@@ -1,10 +1,12 @@
 #!/bin/bash
-export RELPATH=$(dirname $0)/../..;
+export RELPATH=$(dirname $0)/../..
 source $RELPATH/colors.sh
 
-ICONS_MICROPHONE=(􀊲 􀊰 􀊱)
+ICONS_MICROPHONE=(􀊲 􀊰 􀊱) # Set mic icons
+
 update_icon() {
   VOLUME=$(osascript -e 'set ivol to input volume of (get volume settings)')
+  # Set icon + color depending on volume
   case $VOLUME in
   [6-9][0-9] | 100)
     ICON=${ICONS_MICROPHONE[2]}
@@ -26,6 +28,7 @@ update_icon() {
 update_label() {
   VOLUME=$(osascript -e 'set ivol to input volume of (get volume settings)')
   if [ $VOLUME != 0 ]; then
+    # Store current volume in item's label
     mic=(
       label=$VOLUME
       label.drawing=off
@@ -39,13 +42,14 @@ mute_mic() {
 }
 
 unmute_mic() {
+  # Restore from saved volume in label
   STORED_VOLUME=$(sketchybar --query $NAME | sed 's/\\n//g; s/\\\$//g; s/\\ //g' | jq -r '.label.value')
   osascript -e "set volume input volume $STORED_VOLUME"
 }
 
 toggle_mic() {
   VOLUME=$(osascript -e 'set ivol to input volume of (get volume settings)')
-  if [ $VOLUME = 0 ]; then 
+  if [ $VOLUME = 0 ]; then
     update_label
     unmute_mic
   else
@@ -54,8 +58,12 @@ toggle_mic() {
 }
 
 case "$SENDER" in
-  "mouse.clicked") toggle_mic; update_icon
+"mouse.clicked")
+  toggle_mic
+  update_icon
   ;;
-  *) update_label; update_icon
+*)
+  update_label
+  update_icon
   ;;
 esac

@@ -2,9 +2,11 @@
 export RELPATH=$(dirname $0)/../..;
 source $RELPATH/colors.sh
 
-if [ -f ~/.github_token ]; then
+# Check for github token 
+if [[ -f ~/.github_token ]]; then
 GITHUB_TOKEN="$(cat ~/.github_token)" # Should be a PAT with only notification reading permissions
 
+  # Get all user's notifications
   notifications="$(curl -m 15 -s \
     -H "Accept: application/vnd.github+json" \
     -H "Authorization: Bearer $GITHUB_TOKEN" \
@@ -17,6 +19,8 @@ GITHUB_TOKEN="$(cat ~/.github_token)" # Should be a PAT with only notification r
   item=(
     label="$count"
   )
+
+  ### Set icon + label depending on success and notification number
 
   if [[ $curlSuccess != 0 ]];then 
     item+=(
@@ -38,6 +42,9 @@ GITHUB_TOKEN="$(cat ~/.github_token)" # Should be a PAT with only notification r
 
   sketchybar --set "$NAME" "${item[@]}"
 else
+
+  ### If No github token, hide the menu item
+  
   item=(
     width=0
     icon=""

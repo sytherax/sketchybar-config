@@ -1,20 +1,19 @@
 #!/bin/bash
-# Program Vars
+
+# --- Sourcing of core scripts + Initial setup config ---
+RELPATH="$(dirname "$0")"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:$PATH"
+mkdir -p "${TMPDIR}sketchybar"
 
 if [[ -z $(ls /Library/Fonts/ | grep 'sketchybar-app-font') ]]; then
-  echo 'Sketchybarfont not found…'
+  echo 'Sketchybarfont not found…' # Notice if Sketchybar-app-font is not installed
 fi
-
-RELPATH="$(dirname "$0")"
-export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:/run/current-system/sw/bin:/nix/var/nix/profiles/default/bin:$PATH
-mkdir -p ${TMPDIR}sketchybar
-
 
 source "$RELPATH/colors.sh"
 source "$RELPATH/icon_map.sh"
 source "$RELPATH/add_separator.sh"
 
-# Multi Purpose Property vars
+### Global bar properties
 
 FONT="SF Pro"
 OUTER_PADDINGS=5

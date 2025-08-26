@@ -20,4 +20,4 @@ logo=(
 
 sketchybar --add item logo left \
   --set logo "${logo[@]}" \
-  --subscribe logo front_app_switched mouse.clicked 
+  --subscribe logo front_app_switched mouse.clicked

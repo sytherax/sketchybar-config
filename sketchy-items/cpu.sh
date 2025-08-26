@@ -9,7 +9,7 @@ GRAPH_SCRIPT="export PATH=$PATH; $RELPATH/plugins/graph/script.sh"
 graph=(
   graph.color=$SUBTLE_MOON
   drawing=off
-  y_offset=$((- $BAR_HEIGHT / 2 + $GRAPH_MARGIN + 7 ))
+  y_offset=$((-$BAR_HEIGHT / 2 + $GRAPH_MARGIN + 7))
   padding_left=0
   padding_right=0
   icon.drawing=off
@@ -18,7 +18,7 @@ graph=(
   background.padding_right=0
   #background.color=$LOVE_MOON
   background.drawing=on
-  background.height=$(($BAR_HEIGHT - $GRAPH_MARGIN * 2 - 9 ))
+  background.height=$(($BAR_HEIGHT - $GRAPH_MARGIN * 2 - 9))
   script="$GRAPH_SCRIPT"
   update_freq=2
 )
@@ -27,7 +27,7 @@ graph_percent=(
   drawing=off
   padding_left=8
   padding_right=0
-  y_offset=$((- $BAR_HEIGHT / 2 + $GRAPH_MARGIN + 8))
+  y_offset=$((-$BAR_HEIGHT / 2 + $GRAPH_MARGIN + 8))
   label.padding_right=0
   label.padding_left=0
   icon.drawing=off
@@ -44,7 +44,7 @@ graph_label=(
   padding_left=-$PERCENT_WIDTH
   padding_right=-$GRAPH_WIDTH
   label.width=$(($GRAPH_WIDTH + $PERCENT_WIDTH))
-  y_offset=$(( $BAR_HEIGHT / 2 - $GRAPH_MARGIN - 5))
+  y_offset=$(($BAR_HEIGHT / 2 - $GRAPH_MARGIN - 5))
   label.padding_right=0
   label.padding_left=0
   icon.drawing=off
@@ -57,8 +57,8 @@ graph_label=(
 )
 
 sketchybar --add item graph.percent e \
-           --set graph.percent "${graph_percent[@]}" \
-           --add item graph.label e \
-           --set graph.label "${graph_label[@]}" \
-           --add graph graph e $GRAPH_WIDTH \
-           --set graph "${graph[@]}"
+  --set graph.percent "${graph_percent[@]}" \
+  --add item graph.label e \
+  --set graph.label "${graph_label[@]}" \
+  --add graph graph e $GRAPH_WIDTH \
+  --set graph "${graph[@]}"

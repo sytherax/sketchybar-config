@@ -4,7 +4,7 @@ SCRIPT_CALENDAR="export PATH=$PATH; $RELPATH/plugins/calendar/script.sh"
 SCRIPT_CLICK_CALENDAR="export PATH=$PATH; $RELPATH/plugins/calendar/click.sh"
 
 calendar=(
-  icon="$(date '+%a %d. %b')" 
+  icon="$(date '+%a %d. %b')"
   label="$(date '+%H:%M')"
   icon.font="$FONT:Black:12.0"
   icon.padding_right=0
@@ -18,5 +18,5 @@ calendar=(
 
 sketchybar --add item calendar right \
   --set calendar "${calendar[@]}" #\
-  #--subscribe calendar system_woke
+#--subscribe calendar system_woke
 add_separator "0" "right"

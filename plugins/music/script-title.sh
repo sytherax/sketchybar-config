@@ -3,9 +3,11 @@ setscroll() {
   STATE="$(sketchybar --query "music.title" | sed 's/\\n//g; s/\\\$//g; s/\\ //g' | jq -r '.geometry.scroll_texts')"
 
   case "$1" in
-    "on") target="off"
+  "on")
+    target="off"
     ;;
-    "off") target="on"
+  "off")
+    target="on"
     ;;
   esac
 
@@ -16,9 +18,13 @@ setscroll() {
 
 }
 
+### Only scroll text on mouse hover for better performances
+
 case "$SENDER" in
-  "mouse.entered") setscroll on 
+"mouse.entered")
+  setscroll on
   ;;
-  "mouse.exited") setscroll off
+"mouse.exited")
+  setscroll off
   ;;
 esac

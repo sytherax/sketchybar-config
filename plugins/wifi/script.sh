@@ -14,6 +14,8 @@ getname() {
   IP_ADDRESS=$(scutil --nwi | grep address | sed 's/.*://' | tr -d ' ' | head -1)
   PUBLIC_IP=$(curl -m 2 https://ipinfo.io 2>/dev/null 1>&2; echo $?)
 
+  ### Set icon according to wifi state
+
   if [[ $HOTSPOT != "" ]]; then
     ICON=$ICON_HOTSPOT
     ICON_COLOR=$FOAM_MOON
@@ -31,6 +33,8 @@ getname() {
     ICON_COLOR=$LOVE_MOON
     LABEL="off"
   fi
+
+  ### If no access to internet change icon + add a notice to the label
 
   if [[ $PUBLIC_IP != "0" && $LABEL != "off" ]];then
     ICON=$ICON_WIFI_ERROR
@@ -50,6 +54,9 @@ getname() {
 }
 
 setscroll() {
+
+  ### For performances, only scroll on hover
+
   STATE="$(sketchybar --query $NAME | sed 's/\\n//g; s/\\\$//g; s/\\ //g' | jq -r '.geometry.scroll_texts')"
 
   case "$1" in

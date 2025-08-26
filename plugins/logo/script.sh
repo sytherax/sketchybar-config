@@ -1,19 +1,20 @@
 #!/bin/bash
-export RELPATH=$(dirname $0)/../..;
+export RELPATH=$(dirname $0)/../..
 source $RELPATH/colors.sh
 
-if which menubar 2>/dev/null 1>&2;then
-  menubar=$(which menubar)
-else
-  menubar=$RELPATH/menubar
-fi
+command -v 'menubar' 2>/dev/null 1>&2 || alias menubar="$RELPATH/menubar"
 
 FONT=$1
 X_BAR_PADDING=$2
 
+# Get state from background drawing of logo (should be changed)
 STATE="$(sketchybar --query $NAME | sed 's/\\n//g; s/\\\$//g; s/\\ //g' | jq -r '.geometry.background.drawing')"
-if [ -z "$STATE" ]; then STATE="off"; fi
+
+if [[ -z "$STATE" ]]; then STATE="off"; fi
+
+# Show menu titles
 menu_on() {
+  # For each space in the bracket - change their appearance to on
   for space in $(sketchybar --query spaces | jq -r '.bracket[]'); do
     sketchybar --set $space drawing=off
   done
@@ -33,6 +34,7 @@ menu_on() {
 }
 
 menu_off() {
+  # For each space in the bracket - change their appearance to off
   for space in $(sketchybar --query spaces | jq -r '.bracket[]'); do
     sketchybar --set $space drawing=on
   done
@@ -46,14 +48,16 @@ menu_off() {
     icon.y_offset=0 \
     padding_right=10 \
     padding_left=$X_BAR_PADDING
-  mid=1
-  while [ $mid -le 10 ]; do
+
+  for (( i=0; i <= 14; ++i )); do
     sketchybar --set menu.$mid drawing=off
-    mid=$((mid + 1))
   done
 }
 
 toggle_menu() {
+
+  ### Perform different actions depending on state
+
   if [ $BUTTON = "right" ]; then
     if [ $STATE = "off" ]; then
       menu_on
@@ -66,7 +70,7 @@ toggle_menu() {
     if [ $STATE = "off" ]; then
       /System/Applications/Mission\ Control.app/Contents/MacOS/Mission\ Control
     elif [ $STATE = "on" ]; then
-      $menubar -s 0
+      menubar -s 0
     fi
   fi
 }
@@ -76,8 +80,11 @@ update_menus() {
   while IFS= read -r menu; do
     sketchybar --set menu.$mid icon="$menu" drawing=on
     mid=$(($mid + 1))
-  done < <($menubar -l)
-  while [ $mid -le 10 ]; do
+  done < <(menubar -l)
+
+  ### Only set off for menu that have not been updated
+
+  while [[ $mid -le 14 ]]; do
     sketchybar --set menu.$mid drawing=off
     mid=$((mid + 1))
   done

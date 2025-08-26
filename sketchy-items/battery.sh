@@ -3,6 +3,7 @@ SCRIPT_CLICK_BATTERY="export PATH=$PATH; $RELPATH/plugins/battery/click.sh"
 SCRIPT_BATTERY="export PATH=$PATH; $RELPATH/plugins/battery/script.sh"
 
 battery=(
+  drawing=off
   script=$SCRIPT_BATTERY
   click_script="$SCRIPT_CLICK_BATTERY"
   #icon=􀺸
