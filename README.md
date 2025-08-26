@@ -15,13 +15,13 @@ See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussionc
 
 ## Install :
 
-### With the installer :
+With the installer :
 
 `bash -c "$(curl -fsSL https://raw.githubusercontent.com/Kcraft059/sketchybar-config/main/install.sh)"`
 
 <details>
 
-<summary>### Manual install:</summary>
+<summary>Manual install:</summary>
 
 Install sketchybar
 
