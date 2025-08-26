@@ -49,8 +49,8 @@ menu_off() {
     padding_right=10 \
     padding_left=$X_BAR_PADDING
 
-  for (( i=0; i <= 14; ++i )); do
-    sketchybar --set menu.$mid drawing=off
+  for (( i=1; i <= 14; ++i )); do
+    sketchybar --set menu.$i drawing=off
   done
 }
 
