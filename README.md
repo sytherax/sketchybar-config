@@ -12,6 +12,7 @@ See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussionc
 
 > [!WARNING] 
 > Some of the functionnalities of the bar are not working currently in MacOS Tahoe.
+> This implies that: Space switching might not work properly, some menu items won't trigger and be removed from the macos native menubar when trying to trigger those, wifi won't be able to show SSID and will instead show <redacted> ([issue](<https://developer.apple.com/forums/thread/763051>)), and other not yet tested bugs might occur.
 
 ## Install :
 
@@ -66,3 +67,5 @@ For Nix-Darwin users see : https://github.com/Kcraft059/Nix-Config/blob/master/h
 
 
 https://github.com/user-attachments/assets/c9db52a4-d7fe-4daa-a904-cd201476556c
+
+_Note to myself: In recent macos versions, use https://github.com/noperator/wifi-unredactor to get wifi SSID_
