@@ -12,7 +12,7 @@ See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussionc
 
 > [!WARNING] 
 > Some of the functionnalities of the bar are not working currently in MacOS Tahoe.
-> This implies that: Space switching might not work properly, some menu items won't trigger and be removed from the macos native menubar when trying to trigger those, wifi won't be able to show SSID and will instead show <redacted> ([issue](<https://developer.apple.com/forums/thread/763051>)), and other not yet tested bugs might occur.
+> This implies that: Space switching might not work properly, some menu items won't trigger and be removed from the macos native menubar when trying to trigger those, wifi won't be able to show SSID and will instead show \<redacted\> ([issue](<https://developer.apple.com/forums/thread/763051>)), and other not yet tested bugs might occur.
 
 ## Install :
 
