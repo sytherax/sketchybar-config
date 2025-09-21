@@ -67,5 +67,3 @@ For Nix-Darwin users see : https://github.com/Kcraft059/Nix-Config/blob/master/h
 
 
 https://github.com/user-attachments/assets/c9db52a4-d7fe-4daa-a904-cd201476556c
-
-_Note to myself: In recent macos versions, use https://github.com/noperator/wifi-unredactor to get wifi SSID_
