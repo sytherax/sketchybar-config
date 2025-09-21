@@ -3,6 +3,7 @@
 menucontrols=(
   #"Control__Center,UserSwitcher"
   "Control__Center,Bluetooth"
+	"Control__Center,FocusModes"
 )
 
 menuitems=(
