@@ -67,3 +67,98 @@ For Nix-Darwin users see : https://github.com/Kcraft059/Nix-Config/blob/master/h
 
 
 https://github.com/user-attachments/assets/c9db52a4-d7fe-4daa-a904-cd201476556c
+
+## Configuration
+
+A lightweight `config.sh` (or an externally provided file via the `SKETCHYBAR_CONFIG` env var) now allows you to tweak common behaviors without patching the repo.
+
+Defaults (only apply if a variable is unset):
+
+```bash
+NOTCH_WIDTH=180       # Reserved width for the display notch
+MUSIC_INFO_WIDTH=80   # Width (px) for music title & subtitle labels
+CPU_UPDATE_FREQ=2     # Seconds between CPU graph samples
+```
+
+Usage order of precedence:
+1. If `SKETCHYBAR_CONFIG` points to a readable file, it is sourced.
+2. Else if `config.sh` exists in the repo directory, it is sourced.
+3. Fallback defaults are applied inside `sketchybarrc`.
+
+You can remove or comment variables you don't want to override—defaults remain unaffected.
+
+
+### Adjusting for the Notch or Clipping Music
+If album/title text appears clipped by the notch, increase either:
+- `NOTCH_WIDTH` (reserves more center space), or
+- `MUSIC_INFO_WIDTH` (shrinks / expands label region; smaller can prevent collision with other center items).
+
+Reload after changing values: `sketchybar --reload`.
+
+## Nix / Nix-Darwin Integration
+There are multiple ways to integrate these settings through Nix flakes.
+
+### 1. Flake Input 
+```nix
+{
+  inputs.sketchybar-config.url = "github:kcraft059/sketchybar-config";
+  # ...
+}
+```
+Then deploy the repo content into `~/.config/sketchybar` (via home-manager or a derivation) and drop a `config.sh` alongside.
+
+#### Example Home-Manager Module Snippet
+An opinionated module integrating this repo as a flake input and enabling the bar conditionally:
+```nix
+{ config, inputs, pkgs, lib, ... }:
+{
+  options.home-config.status-bar = {
+    enable = lib.mkEnableOption "Whether to enable the Custom Menu-Bar service";
+  };
+
+  config = lib.mkIf config.home-config.status-bar.enable {
+    home.packages = with pkgs; [
+      sketchybar-app-font
+      menubar-cli
+    ];
+
+    programs.sketchybar = {
+      enable = true;
+      service = rec {
+        enable = true;
+        errorLogFile = "/tmp/sketchybar.log";
+        outLogFile = errorLogFile;
+      };
+      configType = "bash";
+      config = {
+        source = "${inputs.sketchybar-config}"; # flake input path
+        recursive = true; # copy entire tree
+      };
+      extraPackages = with pkgs; [
+        menubar-cli
+        imagemagick
+        macmon
+      ];
+    };
+
+    # Example of providing dynamic icon map or other generated files
+    xdg.configFile = {
+      "sketchybar/dyn-icon_map.sh".source = "${pkgs.sketchybar-app-font}/bin/icon_map.sh";
+
+      # Optional: inline user overrides without forking (alternative to config.sh)
+      # "sketchybar/local-config.sh".text = ''
+#   NOTCH_WIDTH=200
+#   MUSIC_INFO_WIDTH=100
+      # '';
+    };
+
+    # If you create local-config.sh above, export it:
+    # home.sessionVariables.SKETCHYBAR_CONFIG = "$HOME/.config/sketchybar/local-config.sh";
+  };
+}
+```
+
+## Troubleshooting
+- CPU not showing: Ensure `cpu.sh` is sourced (it is by default) and run `sketchybar --query item graph.percent` to verify presence.
+- Music overlapping notch: Bump `NOTCH_WIDTH` in small increments (e.g. +10) or reduce `MUSIC_INFO_WIDTH`.
+- Config not applied: Echo inside your `config.sh` or run `grep NOTCH_WIDTH ~/.config/sketchybar/sketchybarrc` to confirm dynamic variable usage.

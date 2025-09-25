@@ -2,7 +2,8 @@
 
 ARTWORK_MARGIN=5
 TITLE_MARGIN=11
-INFO_WIDTH=80
+# Allow override from global config via MUSIC_INFO_WIDTH
+INFO_WIDTH=${MUSIC_INFO_WIDTH:-80}
 
 command -v 'menubar' 2>/dev/null 1>&2 || alias menubar="$RELPATH/menubar"
 
