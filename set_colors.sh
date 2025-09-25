@@ -1,5 +1,6 @@
 #!/bin/bash
 
+# Config sourcing
 if [[ -n "$SKETCHYBAR_CONFIG" && -f "$SKETCHYBAR_CONFIG" ]]; then
   # External override path (useful for Nix)
   # shellcheck disable=SC1090
@@ -10,9 +11,9 @@ elif [[ -f ./config.sh ]]; then
   source ./config.sh
 fi
 
-# Default theme
+# Defaults
 
-: "${COLOR_SCHEME:=rosepine-moon}"
+export COLOR_SCHEME=${COLOR_SCHEME:=rosepine-moon}
 : "${THEME_FILE_PATH:="./theme.sh"}"
 
 if [[ -n "$THEME_FILE_PATH" && -f "$THEME_FILE_PATH" ]]; then
