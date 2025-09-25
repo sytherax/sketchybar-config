@@ -164,8 +164,8 @@ An opinionated module integrating this repo as a flake input and enabling the ba
 
       # Optional: inline user overrides without forking
       # "sketchybar/config.sh".text = ''
-#   NOTCH_WIDTH=200
-#   MUSIC_INFO_WIDTH=100
+      #   NOTCH_WIDTH=200
+      #   MUSIC_INFO_WIDTH=100
       # '';
     };
 
