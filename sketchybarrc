@@ -9,6 +9,22 @@ if [[ -z $(ls /Library/Fonts/ | grep 'sketchybar-app-font') ]]; then
   echo 'Sketchybarfont not found…' # Notice if Sketchybar-app-font is not installed
 fi
 
+# Optional user configuration
+if [[ -n "$SKETCHYBAR_CONFIG" && -f "$SKETCHYBAR_CONFIG" ]]; then
+  # External override path (useful for Nix)
+  # shellcheck disable=SC1090
+  source "$SKETCHYBAR_CONFIG"
+elif [[ -f "$RELPATH/config.sh" ]]; then
+  # Local config file in repository
+  # shellcheck disable=SC1091
+  source "$RELPATH/config.sh"
+fi
+
+# Fallback defaults if variables unset
+: "${NOTCH_WIDTH:=180}"
+: "${MUSIC_INFO_WIDTH:=80}"
+: "${CPU_UPDATE_FREQ:=2}"
+
 source "$RELPATH/colors.sh"
 source "$RELPATH/icon_map.sh"
 source "$RELPATH/add_separator.sh"
@@ -36,7 +52,7 @@ bar=(
   border_color=$BORDER_COLOR
   corner_radius=14
   blur_radius=40
-  notch_width=180
+  notch_width=$NOTCH_WIDTH
 )
 
 defaults=(
@@ -92,6 +108,8 @@ source "$RELPATH/sketchy-items/notifications.sh"
 source "$RELPATH/sketchy-items/controls.sh"
 
 source "$RELPATH/sketchy-items/music.sh"
+
+# CPU module is always sourced by default (original behavior)
 source "$RELPATH/sketchy-items/cpu.sh"
 
 sketchybar --add bracket base-controls battery wifi display \
