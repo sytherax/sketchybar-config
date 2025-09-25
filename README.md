@@ -94,7 +94,7 @@ If album/title text appears clipped by the notch, increase either:
 - `NOTCH_WIDTH` (reserves more center space), or
 - `MUSIC_INFO_WIDTH` (shrinks / expands label region; smaller can prevent collision with other center items).
 
-Reload after changing values: `sketchybar --reload` (tip you can also ⇧+click on the cloverleaf logo to reloed the config direclty fomr the bar).
+Reload after changing values: `sketchybar --reload` (tip you can also ⇧+click on the cloverleaf logo to reload the config directly from the bar).
 
 ## Nix / Nix-Darwin Integration
 There are multiple ways to integrate these settings through Nix flakes.
