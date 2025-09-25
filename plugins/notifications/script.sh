@@ -1,6 +1,6 @@
 #!/bin/bash
 export RELPATH=$(dirname $0)/../..;
-source $RELPATH/colors.sh
+source $RELPATH/set_colors.sh
 
 # Check for github token 
 if [[ -f ~/.github_token ]]; then
@@ -31,12 +31,12 @@ GITHUB_TOKEN="$(cat ~/.github_token)" # Should be a PAT with only notification r
   elif [ $count -gt 0 ]; then
     item+=(
       icon=􀝗
-      icon.color=$LOVE
+      icon.color=$CRITICAL
     )
   else 
     item+=(
       icon=􀋚
-      icon.color=$PINE
+      icon.color=$SELECT
     )
   fi
 

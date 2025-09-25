@@ -6,7 +6,7 @@ SCRIPT_CLICK_USER="export PATH=$PATH; menubar -s \"Control Center,UserSwitcher\"
 
 user=(
   icon=􀅷
-  icon.color=$IRIS
+  icon.color=$ACTIVE
   icon.font="$FONT:Medium:12.0"
   icon.y_offset=1
   icon.padding_right=0

@@ -11,3 +11,7 @@ MUSIC_INFO_WIDTH=80
 
 # CPU graph update frequency (seconds)
 CPU_UPDATE_FREQ=2
+
+# Theme
+
+COLOR_SCHEME="rosepine-moon"

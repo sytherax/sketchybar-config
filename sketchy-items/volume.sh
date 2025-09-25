@@ -10,7 +10,7 @@ volume_slider=(
   padding_right=0
   label.drawing=off
   icon.drawing=off
-  slider.highlight_color=$PINE
+  slider.highlight_color=$SELECT
   slider.background.height=5
   slider.background.corner_radius=3
   slider.background.color=$MUTED
@@ -24,7 +24,7 @@ volume_icon=(
   icon.padding_left=$(($OUTER_PADDINGS - 3))
   icon.padding_right=$OUTER_PADDINGS
 
-  icon.color=$IRIS
+  icon.color=$ACTIVE
   #label.width=32
   label.padding_left=0
   label.padding_right=0

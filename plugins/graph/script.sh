@@ -1,6 +1,6 @@
 #!/bin/bash
 export RELPATH=$(dirname $0)/../..
-source $RELPATH/colors.sh
+source $RELPATH/set_colors.sh
 
 ### Fetch system related data
 
@@ -14,7 +14,7 @@ topprog_pid=$(echo "$probe" | awk '{print $1}')
 ### Modify top consumming program name color to red if depassing more than 100% cpu
 
 if [[ $(printf "%.0f" $topprog_percent) -gt 100 ]]; then
-  LABEL_COLOR=$LOVE
+  LABEL_COLOR=$CRITICAL
 else
   LABEL_COLOR=$SUBTLE
 fi
@@ -29,16 +29,16 @@ graphpoint=$(bc <<<"scale=1; $graphpercent / 100 ")
 
 case $(printf "%.0f" $graphpercent) in
 [8-9][0-9] | 7[5-9] | 100)
-  COLOR=$LOVE
+  COLOR=$CRITICAL
   ;;
 [5-6][0-9] | 7[0-4])
-  COLOR=$ROSE
+  COLOR=$WARN
   ;;
 [3-5][0-9] | 2[5-9])
-  COLOR=$GOLD
+  COLOR=$NOTICE
   ;;
 [5-9] | 1[0-9] | 2[0-4])
-  COLOR=$PINE
+  COLOR=$SELECT
   ;;
 *) COLOR=$SUBTLE ;;
 esac

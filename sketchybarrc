@@ -25,7 +25,7 @@ fi
 : "${MUSIC_INFO_WIDTH:=80}"
 : "${CPU_UPDATE_FREQ:=2}"
 
-source "$RELPATH/colors.sh"
+source "$RELPATH/set_colors.sh"
 source "$RELPATH/icon_map.sh"
 source "$RELPATH/add_separator.sh"
 

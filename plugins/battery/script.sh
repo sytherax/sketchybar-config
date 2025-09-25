@@ -1,6 +1,6 @@
 #!/bin/bash
 export RELPATH=$(dirname $0)/../..
-source $RELPATH/colors.sh
+source $RELPATH/set_colors.sh
 
 PERCENTAGE="$(pmset -g batt | grep -Eo "[0-9]+%" | cut -d% -f1)"
 ACCONNECTED="$(pmset -g batt | grep 'AC Power')"
@@ -16,23 +16,23 @@ COLOR=$TEXT
 case ${PERCENTAGE} in
 9[0-9] | 100)
   ICON=􀛨
-  COLOR=$PINE
+  COLOR=$SELECT
   ;;
 [6-8][0-9])
   ICON=􀺸
-  COLOR=$FOAM
+  COLOR=$GLOW
   ;;
 [3-5][0-9])
   ICON=􀺶
-  COLOR=$GOLD
+  COLOR=$NOTICE
   ;;
 [1-2][0-9])
   ICON=􀛩
-  COLOR=$ROSE
+  COLOR=$WARN
   ;;
 *)
   ICON=􀛪
-  COLOR=$LOVE
+  COLOR=$CRITICAL
   ;;
 esac
 
@@ -41,7 +41,7 @@ if [[ $ACCONNECTED != "" ]]; then
   if [[ $NOTCHARGING != "" ]]; then
     COLOR=$SUBTLE
   else
-    COLOR=$IRIS
+    COLOR=$ACTIVE
   fi
 fi
 

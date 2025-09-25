@@ -1,6 +1,6 @@
 #!/bin/bash
 export RELPATH=$(dirname $0)/../..
-source $RELPATH/colors.sh
+source $RELPATH/set_colors.sh
 
 command -v 'menubar' 2>/dev/null 1>&2 || alias menubar="$RELPATH/menubar"
 
@@ -22,7 +22,7 @@ menu_on() {
     --set separator drawing=off \
     --set front_app drawing=off \
     --animate tanh 15 --set $NAME background.drawing=on \
-    icon.color=$PINE \
+    icon.color=$SELECT \
     icon=􀣺 \
     icon.font="$FONT:Black:17.0" \
     icon.y_offset=1 \
