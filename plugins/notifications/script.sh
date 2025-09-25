@@ -44,10 +44,10 @@ GITHUB_TOKEN="$(cat ~/.github_token)" # Should be a PAT with only notification r
 else
 
   ### If No github token, hide the menu item
-  
   item=(
     width=0
-    icon=""
+		label.drawing="off"
+		icon.drawing="off"
   )
   sketchybar --set "$NAME" "${item[@]}"
 fi
