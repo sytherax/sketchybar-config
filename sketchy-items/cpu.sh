@@ -10,7 +10,7 @@ GRAPH_SCRIPT="export PATH=$PATH; $RELPATH/plugins/graph/script.sh"
 : "${CPU_UPDATE_FREQ:=2}"
 
 graph=(
-  graph.color=$SUBTLE_MOON
+  graph.color=$SUBTLE
   drawing=off
   y_offset=$((-$BAR_HEIGHT / 2 + $GRAPH_MARGIN + 7))
   padding_left=0
@@ -34,7 +34,7 @@ graph_percent=(
   label.padding_left=0
   icon.drawing=off
   label.drawing=on
-  #background.color=$LOVE_MOON
+  #background.color=$LOVE
   background.drawing=off
   label="37%"
   label.width=$PERCENT_WIDTH
@@ -51,10 +51,10 @@ graph_label=(
   label.padding_left=0
   icon.drawing=off
   label.drawing=on
-  #background.color=$LOVE_MOON
+  #background.color=$LOVE
   background.drawing=off
   label="GLUOP ORPI EIOP - EOIYUEUI 33%"
-  label.color=$SUBTLE_MOON
+  label.color=$SUBTLE
   label.font="$FONT:Regular:7.0"
 )
 
