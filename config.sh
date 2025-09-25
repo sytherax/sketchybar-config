@@ -13,5 +13,5 @@ MUSIC_INFO_WIDTH=80
 CPU_UPDATE_FREQ=2
 
 # Theme
-
-COLOR_SCHEME="rosepine-moon"
+COLOR_SCHEME="catppuccin-mocha"
+#THEME_FILE_PATH="$HOME/.config/sketchybar-config/theme.sh"
