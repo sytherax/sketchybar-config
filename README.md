@@ -83,11 +83,27 @@ CPU_UPDATE_FREQ=2     # Seconds between CPU graph samples
 
 Usage order of precedence:
 1. If `SKETCHYBAR_CONFIG` points to a readable file, it is sourced.
-2. Else if `config.sh` exists in the repo directory, it is sourced.
+2. Else if `config.sh` exists in the repo directory, it is sourced (see exmaples in ./config-examples/).
 3. Fallback defaults are applied inside `sketchybarrc`.
 
 You can remove or comment variables you don't want to override—defaults remain unaffected.
 
+### Adding a custom theme 
+
+In the config.sh, you can choose the theme used for the bar :
+
+```bash
+COLOR_SCHEME="rosepine-moon"
+```
+
+You can also set your own theme by adding a theme.sh file, or by specifying the path to the theme file :
+
+```bash
+COLOR_SCHEME="my-theme"
+THEME_FILE_PATH="$HOME/.config/sketchybar-config/theme.sh"
+```
+
+The file must follow the format in the example (./config-examples)
 
 ### Adjusting for the Notch or Clipping Music
 If album/title text appears clipped by the notch, increase either:
@@ -146,15 +162,13 @@ An opinionated module integrating this repo as a flake input and enabling the ba
     xdg.configFile = {
       "sketchybar/dyn-icon_map.sh".source = "${pkgs.sketchybar-app-font}/bin/icon_map.sh";
 
-      # Optional: inline user overrides without forking (alternative to config.sh)
-      # "sketchybar/local-config.sh".text = ''
+      # Optional: inline user overrides without forking
+      # "sketchybar/config.sh".text = ''
 #   NOTCH_WIDTH=200
 #   MUSIC_INFO_WIDTH=100
       # '';
     };
 
-    # If you create local-config.sh above, export it:
-    # home.sessionVariables.SKETCHYBAR_CONFIG = "$HOME/.config/sketchybar/local-config.sh";
   };
 }
 ```
