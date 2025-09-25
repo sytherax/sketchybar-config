@@ -64,7 +64,7 @@ For yabai users : `yabai -m config external_bar all:36:0`
 </details>
 
 For Nix-Darwin users see : [here](#nix--nix-darwin-integration)
-or alternaitvely https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
+or alternatively https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
 
 > [!NOTE]
 > Aerospace isn't yet supported, if you wanna implement it see : https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussioncomment-14081291
