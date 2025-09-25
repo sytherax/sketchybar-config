@@ -6,13 +6,21 @@
 </div>
 
 
-This is a config I made which aggregate functionnality and aesthetics.
+This is a config I made which aggregate functionnality and aesthetics, made in mind to be Nix-Compliant.
 
 See https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussioncomment-14058252
 
 > [!WARNING] 
 > Some of the functionnalities of the bar are not working currently in MacOS Tahoe.
 > This implies that: Space switching might not work properly, some menu items won't trigger and be removed from the macos native menubar when trying to trigger those, wifi won't be able to show SSID and will instead show \<redacted\> ([issue](<https://developer.apple.com/forums/thread/763051>)), and other not yet tested bugs might occur.
+
+## A little demonstration of the functionalities :
+
+<img width="2940" height="1912" alt="Screenshot 2025-08-09 at 18 49 42" src="https://github.com/user-attachments/assets/23066c77-1b31-4372-a737-8bf450af1d80" />
+<img width="2940" height="1912" alt="Screenshot 2025-08-09 at 18 55 12" src="https://github.com/user-attachments/assets/0406413d-4468-4ba7-b55d-1c59e7e52cfb" />
+
+
+https://github.com/user-attachments/assets/c9db52a4-d7fe-4daa-a904-cd201476556c
 
 ## Install :
 
@@ -55,18 +63,11 @@ For yabai users : `yabai -m config external_bar all:36:0`
 
 </details>
 
-For Nix-Darwin users see : https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
+For Nix-Darwin users see : [here](#nix--nix-darwin-integration)
+or alternaitvely https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
 
 > [!NOTE]
 > Aerospace isn't yet supported, if you wanna implement it see : https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussioncomment-14081291
-
-## A little demonstration of the functionalities :
-
-<img width="2940" height="1912" alt="Screenshot 2025-08-09 at 18 49 42" src="https://github.com/user-attachments/assets/23066c77-1b31-4372-a737-8bf450af1d80" />
-<img width="2940" height="1912" alt="Screenshot 2025-08-09 at 18 55 12" src="https://github.com/user-attachments/assets/0406413d-4468-4ba7-b55d-1c59e7e52cfb" />
-
-
-https://github.com/user-attachments/assets/c9db52a4-d7fe-4daa-a904-cd201476556c
 
 ## Configuration
 
@@ -93,7 +94,7 @@ If album/title text appears clipped by the notch, increase either:
 - `NOTCH_WIDTH` (reserves more center space), or
 - `MUSIC_INFO_WIDTH` (shrinks / expands label region; smaller can prevent collision with other center items).
 
-Reload after changing values: `sketchybar --reload`.
+Reload after changing values: `sketchybar --reload` (tip you can also ⇧+click on the cloverleaf logo to reload the config directly from the bar).
 
 ## Nix / Nix-Darwin Integration
 There are multiple ways to integrate these settings through Nix flakes.
