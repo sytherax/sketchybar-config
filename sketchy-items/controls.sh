@@ -14,7 +14,7 @@ for item in "${menuitem[@]}"; do
     padding_left=-3
     padding_right=-7
     #x_offset=20
-    alias.color=$FOAM_MOON
+    alias.color=$FOAM
     label.drawing=off
     icon.drawing=off
     click_script="$SCRIPT_CLICK_MENU_ITEM"
