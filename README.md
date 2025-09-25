@@ -136,7 +136,7 @@ An opinionated module integrating this repo as a flake input and enabling the ba
   config = lib.mkIf config.home-config.status-bar.enable {
     home.packages = with pkgs; [
       sketchybar-app-font
-      # menubar-cli # (need to come from an overlay, check [overlays/menubar-cli.nix](https://github.com/Kcraft059/Nix-Config/blob/master/overlays/menubar-cli.nix)
+      # menubar-cli # (needs to come from an overlay, check [overlays/menubar-cli.nix](https://github.com/Kcraft059/Nix-Config/blob/master/overlays/menubar-cli.nix) for implementation - bin by @FelixKratz 
     ];
 
     programs.sketchybar = {
