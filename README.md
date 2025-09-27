@@ -64,7 +64,7 @@ For yabai users : `yabai -m config external_bar all:36:0`
 </details>
 
 For Nix-Darwin users see : [here](#nix--nix-darwin-integration)
-or alternaitvely https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
+or alternatively https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
 
 > [!NOTE]
 > Aerospace isn't yet supported, if you wanna implement it see : https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussioncomment-14081291
@@ -136,7 +136,7 @@ An opinionated module integrating this repo as a flake input and enabling the ba
   config = lib.mkIf config.home-config.status-bar.enable {
     home.packages = with pkgs; [
       sketchybar-app-font
-      menubar-cli
+      # menubar-cli # (needs to come from an overlay, check https://github.com/Kcraft059/Nix-Config/blob/master/overlays/menubar-cli.nix for implementation - bin by @FelixKratz) 
     ];
 
     programs.sketchybar = {
@@ -152,7 +152,7 @@ An opinionated module integrating this repo as a flake input and enabling the ba
         recursive = true; # copy entire tree
       };
       extraPackages = with pkgs; [
-        menubar-cli
+        # menubar-cli # see above
         imagemagick
         macmon
       ];
@@ -164,8 +164,8 @@ An opinionated module integrating this repo as a flake input and enabling the ba
 
       # Optional: inline user overrides without forking
       # "sketchybar/config.sh".text = ''
-#   NOTCH_WIDTH=200
-#   MUSIC_INFO_WIDTH=100
+      #   NOTCH_WIDTH=200
+      #   MUSIC_INFO_WIDTH=100
       # '';
     };
 
