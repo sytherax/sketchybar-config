@@ -86,10 +86,10 @@ if [[ "$COLOR_SCHEME" == "catppuccin-mocha" ]]; then
 
 	# General bar colors
 	if [[ $BAR_TRANSPARENCY == true ]]; then
-		export BAR_COLOR=0xB81e1e2e 
+		export BAR_COLOR=0xB81f1f30
 		export BORDER_COLOR=0xB845475a
 	elif [[ $BAR_TRANSPARENCY == false ]]; then
-		export BAR_COLOR=0xff1e1e2e 
+		export BAR_COLOR=0xff1f1f30
 		export BORDER_COLOR=0xff45475a
 	fi
 	export ICON_COLOR=$TEXT  # Color of all icons
