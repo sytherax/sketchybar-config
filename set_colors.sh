@@ -45,10 +45,10 @@ if [[ "$COLOR_SCHEME" == "rosepine-moon" ]]; then
 
 	# General bar colors
 	if [[ $BAR_TRANSPARENCY == true ]]; then
-		export BAR_COLOR=0x80414354 #0xD9232136
+		export BAR_COLOR=0x80414354 
 		export BORDER_COLOR=0x804D525B
 	elif [[ $BAR_TRANSPARENCY == false ]]; then
-		export BAR_COLOR=0xff414354 #0xD9232136
+		export BAR_COLOR=0xff414354 
 		export BORDER_COLOR=0xff4D525B
 	fi
 	export ICON_COLOR=$TEXT  # Color of all icons
@@ -86,10 +86,10 @@ if [[ "$COLOR_SCHEME" == "catppuccin-mocha" ]]; then
 
 	# General bar colors
 	if [[ $BAR_TRANSPARENCY == true ]]; then
-		export BAR_COLOR=0xB81e1e2e #313244 #0xD9232136
+		export BAR_COLOR=0xB81e1e2e 
 		export BORDER_COLOR=0xB845475a
 	elif [[ $BAR_TRANSPARENCY == false ]]; then
-		export BAR_COLOR=0xff1e1e2e #313244 #0xD9232136
+		export BAR_COLOR=0xff1e1e2e 
 		export BORDER_COLOR=0xff45475a
 	fi
 	export ICON_COLOR=$TEXT  # Color of all icons
