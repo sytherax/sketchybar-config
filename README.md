@@ -118,8 +118,10 @@ There are multiple ways to integrate these settings through Nix flakes.
 ### 1. Flake Input 
 ```nix
 {
-  inputs.sketchybar-config.url = "github:kcraft059/sketchybar-config";
-  # ...
+  sketchybar-config = {
+    url = "github:kcraft059/sketchybar-config";
+    flake = false;
+  };
 }
 ```
 Then deploy the repo content into `~/.config/sketchybar` (via home-manager or a derivation) and drop a `config.sh` alongside.
