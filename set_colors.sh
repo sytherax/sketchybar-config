@@ -79,7 +79,7 @@ if [[ "$COLOR_SCHEME" == "catppuccin-mocha" ]]; then
 	export TRANSPARENT=0x00000000
 
 	# General bar colors
-	export BAR_COLOR=0x80313244 #0xD9232136
+	export BAR_COLOR=0xB81e1e2e #313244 #0xD9232136
 	export BORDER_COLOR=0x8045475a
 	export ICON_COLOR=$TEXT  # Color of all icons
 	export LABEL_COLOR=$TEXT # Color of all labels
