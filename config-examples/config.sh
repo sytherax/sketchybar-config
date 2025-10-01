@@ -14,4 +14,5 @@ CPU_UPDATE_FREQ=2
 
 # Color theme chosing and import
 COLOR_SCHEME="rosepine-moon"
+BAR_TRANSPARENCY=false
 THEME_FILE_PATH="$HOME/.config/sketchybar-config/theme.sh"

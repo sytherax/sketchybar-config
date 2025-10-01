@@ -2,22 +2,23 @@
 
 # Config sourcing
 if [[ -n "$SKETCHYBAR_CONFIG" && -f "$SKETCHYBAR_CONFIG" ]]; then
-  # External override path (useful for Nix)
-  # shellcheck disable=SC1090
-  source "$SKETCHYBAR_CONFIG"
+	# External override path (useful for Nix)
+	# shellcheck disable=SC1090
+	source "$SKETCHYBAR_CONFIG"
 elif [[ -f ./config.sh ]]; then
-  # Local config file in repository
-  # shellcheck disable=SC1091
-  source ./config.sh
+	# Local config file in repository
+	# shellcheck disable=SC1091
+	source ./config.sh
 fi
 
 # Defaults
 
-export COLOR_SCHEME=${COLOR_SCHEME:=rosepine-moon}
+export COLOR_SCHEME=${COLOR_SCHEME:-rosepine-moon}
+export BAR_TRANSPARENCY=${BAR_TRANSPARENCY:-true}
 : "${THEME_FILE_PATH:="./theme.sh"}"
 
 if [[ -n "$THEME_FILE_PATH" && -f "$THEME_FILE_PATH" ]]; then
-  source "$THEME_FILE_PATH"
+	source "$THEME_FILE_PATH"
 fi
 
 # Rosé pine Moon theme
@@ -43,8 +44,13 @@ if [[ "$COLOR_SCHEME" == "rosepine-moon" ]]; then
 	export TRANSPARENT=0x00000000
 
 	# General bar colors
-	export BAR_COLOR=0x80414354 #0xD9232136
-	export BORDER_COLOR=0x804D525B
+	if [[ $BAR_TRANSPARENCY == true ]]; then
+		export BAR_COLOR=0x80414354 #0xD9232136
+		export BORDER_COLOR=0x804D525B
+	elif [[ $BAR_TRANSPARENCY == false ]]; then
+		export BAR_COLOR=0xff414354 #0xD9232136
+		export BORDER_COLOR=0xff4D525B
+	fi
 	export ICON_COLOR=$TEXT  # Color of all icons
 	export LABEL_COLOR=$TEXT # Color of all labels
 
@@ -79,8 +85,13 @@ if [[ "$COLOR_SCHEME" == "catppuccin-mocha" ]]; then
 	export TRANSPARENT=0x00000000
 
 	# General bar colors
-	export BAR_COLOR=0xB81e1e2e #313244 #0xD9232136
-	export BORDER_COLOR=0x8045475a
+	if [[ $BAR_TRANSPARENCY == true ]]; then
+		export BAR_COLOR=0xB81e1e2e #313244 #0xD9232136
+		export BORDER_COLOR=0xB845475a
+	elif [[ $BAR_TRANSPARENCY == false ]]; then
+		export BAR_COLOR=0xff1e1e2e #313244 #0xD9232136
+		export BORDER_COLOR=0xff45475a
+	fi
 	export ICON_COLOR=$TEXT  # Color of all icons
 	export LABEL_COLOR=$TEXT # Color of all labels
 
