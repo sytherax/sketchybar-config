@@ -138,7 +138,6 @@ An opinionated module integrating this repo as a flake input and enabling the ba
   config = lib.mkIf config.home-config.status-bar.enable {
     home.packages = with pkgs; [
       sketchybar-app-font
-      # menubar-cli # (needs to come from an overlay, check https://github.com/Kcraft059/Nix-Config/blob/master/overlays/menubar-cli.nix for implementation - bin by @FelixKratz) 
     ];
 
     programs.sketchybar = {
@@ -154,7 +153,8 @@ An opinionated module integrating this repo as a flake input and enabling the ba
         recursive = true; # copy entire tree
       };
       extraPackages = with pkgs; [
-        # menubar-cli # see above
+        # menubar-cli # (needs to come from an overlay, check https://github.com/Kcraft059/Nix-Config/blob/master/overlays/menubar-cli.nix for implementation - bin by @FelixKratz) 
+        # wifi-unredactor (needs to come from an overlay, check https://github.com/Kcraft059/Nix-Config/blob/master/overlays/wifi-unredactor.nix for implementation - app by @noperator)
         imagemagick
         macmon
       ];
