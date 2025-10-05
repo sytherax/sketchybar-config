@@ -154,7 +154,7 @@ An opinionated module integrating this repo as a flake input and enabling the ba
       };
       extraPackages = with pkgs; [
         # menubar-cli # (needs to come from an overlay, check https://github.com/Kcraft059/Nix-Config/blob/master/overlays/menubar-cli.nix for implementation - bin by @FelixKratz) 
-        # wifi-unredactor (needs to come from an overlay, check https://github.com/Kcraft059/Nix-Config/blob/master/overlays/wifi-unredactor.nix for implementation - app by @noperator)
+        # wifi-unredactor # (needs to come from an overlay, check https://github.com/Kcraft059/Nix-Config/blob/master/overlays/wifi-unredactor.nix for implementation - app by @noperator)
         imagemagick
         macmon
       ];
