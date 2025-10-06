@@ -9,4 +9,4 @@ for ((i = 0; i <= 5; ++i)); do
 done
 
 sketchybar --set $NAME icon="$(date '+%a %d. %b')" label="$(date '+%H:%M')" \
-  label.width=40
+  label.width=50

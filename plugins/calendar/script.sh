@@ -2,7 +2,8 @@
 
 ### Wait for start of next minute to update clock
 
-sleep $((59 - $(date '+%S')))
+sleep $((59 - $(date '+%-S')))
+
 while [[ $(date '+%S') != "00" ]]; do
   sleep 0.1
 done
