@@ -1,10 +1,5 @@
 #!/bin/bash
 # sketchybar --query default_menu_items
-menucontrols=(
-  #"Control__Center,UserSwitcher"
-  "Control__Center,Bluetooth"
-	"Control__Center,FocusModes"
-)
 
 menuitems=(
   "pkgs"
@@ -14,7 +9,7 @@ menuitems=(
 
 SCRIPT_CLICK_SEPARATOR_MORE="export PATH=$PATH; \
 $RELPATH/plugins/more-menu/script.sh \
-\"${menucontrols[@]}\" \"${menuitems[@]}\" $INNER_PADDINGS \"$FONT\" "
+\"${MENU_CONTROLS[@]}\" \"${menuitems[@]}\" $INNER_PADDINGS \"$FONT\" "
 
 separator=(
   icon=􀯶

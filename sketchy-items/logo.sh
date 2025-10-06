@@ -1,5 +1,5 @@
 #!/bin/bash
-SCRIPT_POPUP_TOGGLE="export PATH=$PATH; $RELPATH/plugins/logo/script.sh \"$FONT\" $X_BAR_PADDING"
+SCRIPT_POPUP_TOGGLE="export PATH=$PATH; $RELPATH/plugins/logo/script.sh \"$FONT\" $X_BAR_PADDING $MENUBAR_AUTOHIDE"
 
 logo=(
   icon=􀆔

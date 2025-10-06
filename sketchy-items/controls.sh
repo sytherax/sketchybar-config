@@ -1,5 +1,5 @@
 #!/bin/bash
-for item in "${menucontrols[@]}"; do
+for item in "${MENU_CONTROLS[@]}"; do
   new_item=$(echo "$item" | sed -e 's/__/ /g')
   menuitem+=("$new_item")
 done
