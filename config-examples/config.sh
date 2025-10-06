@@ -12,6 +12,19 @@ MUSIC_INFO_WIDTH=80
 # CPU graph update frequency (seconds)
 CPU_UPDATE_FREQ=2
 
+# Hide automatically menubar items (left click on logo)
+MENUBAR_AUTOHIDE=False
+
+# Included native menubar items 
+# Replace " " by "__" and query with `sketchybar --query default_menu_items` 
+MENU_CONTROLS=(
+	"Control__Center,FocusModes"
+	"Control__Center,Bluetooth"
+)
+
+# GITHUB Token pass for notifications 
+GITHUB_TOKEN="~/.github_token"
+
 # Color theme chosing and import
 COLOR_SCHEME="rosepine-moon"
 BAR_TRANSPARENCY=false
