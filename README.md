@@ -1,4 +1,5 @@
-# Utility Bar - Rosé Pine Moon
+# Utility Bar
+## Rosé Pine Moon (and more !)
 <div align=center>
 <img width="1470" height="40" alt="Screenshot 2025-08-21 at 12 39 13" src="https://github.com/user-attachments/assets/230c1063-cb96-4686-9745-270335e650e5" />
 <img width="1470" height="40" alt="Screenshot 2025-08-21 at 12 39 39" src="https://github.com/user-attachments/assets/c34be030-27f3-4bf4-a7df-d1119208c824" />
