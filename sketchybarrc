@@ -26,10 +26,9 @@ fi
 : "${CPU_UPDATE_FREQ:=2}"
 : "${MENUBAR_AUTOHIDE:=True}"
 : "${GITHUB_TOKEN:="~/.github_token"}"
+: "${WIFI_UNREDACTOR:="~/Applications/wifi-unredactor.app"}"
 
 [ ${#MENU_CONTROLS[@]} -eq 0 ] && MENU_CONTROLS=(
-  #"Control__Center,UserSwitcher"
-  #"Control__Center,FocusModes"
   "Control__Center,Bluetooth"
 )
 

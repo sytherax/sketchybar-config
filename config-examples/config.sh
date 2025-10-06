@@ -22,8 +22,11 @@ MENU_CONTROLS=(
 	"Control__Center,Bluetooth"
 )
 
-# GITHUB Token pass for notifications 
+# GITHUB Token path for notifications 
 GITHUB_TOKEN="~/.github_token"
+
+# Wifi unredactor path
+WIFI_UNREDACTOR="~/Applications/wifi-unredactor.app"
 
 # Color theme chosing and import
 COLOR_SCHEME="rosepine-moon"

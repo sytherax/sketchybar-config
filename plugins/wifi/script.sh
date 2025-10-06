@@ -2,8 +2,10 @@
 export RELPATH=$(dirname $0)/../..
 source $RELPATH/set_colors.sh
 
-if ! command -v wifi-unredactor 2>/dev/null 1>&2 && [ -e "$HOME/Applications/wifi-unredactor.app" ]; then
-	alias wifi-unredactor="$HOME/Applications/wifi-unredactor.app/Contents/MacOS/wifi-unredactor"
+WIFI_UNREDACTOR=$1
+
+if ! command -v wifi-unredactor 2>/dev/null 1>&2 && [ -e "$WIFI_UNREDACTOR" ]; then
+	alias wifi-unredactor="$WIFI_UNREDACTOR/Contents/MacOS/wifi-unredactor"
 	echo 'using app'
 fi
 

@@ -1,5 +1,5 @@
 #!/bin/bash
-SCRIPT_WIFI="export PATH=$PATH; $RELPATH/plugins/wifi/script.sh"
+SCRIPT_WIFI="export PATH=$PATH; $RELPATH/plugins/wifi/script.sh $WIFI_UNREDACTOR"
 
 SCRIPT_CLICK_WIFI="export PATH=$PATH; $RELPATH/plugins/wifi/click.sh"
 
