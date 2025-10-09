@@ -67,8 +67,91 @@ For yabai users : `yabai -m config external_bar all:36:0`
 For Nix-Darwin users see : [here](#nix--nix-darwin-integration)
 or alternatively https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin/sketchybar.nix
 
-> [!NOTE]
-> Aerospace isn't yet supported, if you want implement it / make a PR see : https://github.com/FelixKratz/SketchyBar/discussions/47?sort=new#discussioncomment-14081291
+## Window Manager Integration
+
+This configuration supports multiple window managers through the `FORCE_WM` environment variable.
+
+### Supported Window Managers
+
+- **Yabai** (default): Traditional tiling window manager
+- **Aerospace**: Modern tiling window manager with simpler configuration
+- **Rift**: Rust-based tiling window manager
+
+### Setup
+
+Set the window manager in your `config.sh`:
+```bash
+FORCE_WM="aerospace"  # or "rift" or leave empty for yabai
+```
+
+### Aerospace Setup
+
+1. Enable aerospace mode in your `config.sh`:
+```bash
+FORCE_WM="aerospace"
+```
+
+2. Add the following to your `~/.config/aerospace/aerospace.toml`:
+```toml
+# Add this anywhere in your aerospace.toml file
+# IMPORTANT: Must be an array format, NOT using exec-and-forget
+exec-on-workspace-change = [
+  '/opt/homebrew/bin/bash',
+  '-c',
+  '/opt/homebrew/bin/sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE'
+]
+```
+
+3. Reload both configurations:
+```bash
+aerospace reload-config
+sketchybar --reload
+```
+
+### Rift Setup
+
+1. Enable rift mode in your `config.sh`:
+```bash
+FORCE_WM="rift"
+```
+
+2. Ensure rift-cli is installed and accessible in your PATH
+
+3. Reload sketchybar:
+```bash
+sketchybar --reload
+```
+
+### Window Manager Differences
+
+**Aerospace vs Yabai:**
+- **Creating workspaces**: Right-clicking the separator won't create new workspaces (aerospace manages workspaces differently)
+- **Destroying workspaces**: Right-clicking workspace items won't destroy them
+- **Performance**: Uses efficient workspace-specific triggers instead of updating all workspaces
+- **Workspace switching**: Click on workspace items to switch (supports both left and right click)
+
+**Rift vs Yabai:**
+- **Dynamic workspaces**: Rift workspaces are detected automatically by name
+- **JSON API**: Uses rift-cli query commands for workspace and window information
+- **Workspace creation**: Right-clicking the separator creates new workspaces via rift-cli
+
+### Troubleshooting
+
+**General:**
+- **Workspaces not updating**: Ensure `sketchybar --reload` has been run after configuration changes
+- **Click not working**: Verify your window manager is in your PATH
+
+**Aerospace specific:**
+- **Setup script fails**: Check that both aerospace and sketchybar are properly installed via Homebrew
+- **Config file errors**: Run `aerospace validate-config` to check your aerospace.toml syntax
+- **"Event not found" errors**: Check `/tmp/sketchybar.out.log` for missing events. Ensure `FORCE_WM="aerospace"` is set in config.sh
+- **"Permission denied" errors**: Check `/tmp/sketchybar.err.log`. The aerospace-script.sh file may need execute permissions: `chmod +x ~/.config/sketchybar/plugins/spaces/aerospace-script.sh`
+- **Runtime errors**: If you see `exec-and-forget` errors, ensure your aerospace.toml uses the array format: `["bash", "-c", "command"]` not `"exec-and-forget command"`
+
+**Rift specific:**
+- **rift-cli not found**: Ensure rift-cli is installed and in your PATH
+- **jq errors**: Ensure jq is installed (`brew install jq`) as it's required for parsing rift's JSON output
+- **Permission denied**: The rift script files may need execute permissions: `chmod +x ~/.config/sketchybar/plugins/spaces/rift-*.sh`
 
 ## Configuration
 
@@ -81,9 +164,10 @@ NOTCH_WIDTH=180         # Reserved width for the display notch
 MUSIC_INFO_WIDTH=80     # Width (px) for music title & subtitle labels
 CPU_UPDATE_FREQ=2       # Seconds between CPU graph samples
 MENUBAR_AUTOHIDE=True   # Whether to automatically hide the menu titles
-GITHUB_TOKEN="~/.github_token" # Path to your GitHub Classic token (for notifications) 
+GITHUB_TOKEN="~/.github_token" # Path to your GitHub Classic token (for notifications)
 WIFI_UNREDACTOR="~/Applications/wifi-unredactor.app" # Wifi unredactor path
-BAR_LOOK="plain"        # Aspect of the bar 
+BAR_LOOK="plain"        # Aspect of the bar <"plain"|"compact">
+FORCE_WM=""             # Window manager integration <""|"yabai"|"aerospace"|"rift">
 ```
 
 Usage order of precedence:
