@@ -191,6 +191,7 @@ An opinionated module integrating this repo as a flake input :
 </details>
 
 ## Troubleshooting
+- Menu Bar items like `volume`, `wifi`, `bluetooth`, etc are not clickable (not working on macOS 26) : Ensure the items are present in the macOS native Menu Bar so that the program can simulate a click on the item.
 - CPU not showing: Ensure `cpu.sh` is sourced (it is by default) and run `sketchybar --query item graph.percent` to verify presence.
 - Music overlapping notch: Bump `NOTCH_WIDTH` in small increments (e.g. +10) or reduce `MUSIC_INFO_WIDTH`.
 - Config not applied: Echo inside your `config.sh` or run `grep NOTCH_WIDTH ~/.config/sketchybar/sketchybarrc` to confirm dynamic variable usage.
