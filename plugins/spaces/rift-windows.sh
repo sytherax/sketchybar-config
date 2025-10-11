@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Aerospace workspace windows indicator
+# Rift workspace windows indicator
 # This script updates workspace labels to show app icons for windows in each workspace
 
 export RELPATH=$(dirname $0)/../..
@@ -8,19 +8,28 @@ source "$RELPATH/icon_map.sh"
 
 # Get current focused workspace
 get_focused_workspace() {
-  aerospace list-workspaces --focused 2>/dev/null
+  rift-cli query workspaces 2>/dev/null | jq -r '.[] | select(.is_active == true) | .name'
 }
 
 update_workspace_windows() {
   local workspace_id=$1
 
-  # Get apps in this workspace
-  apps=$(aerospace list-windows --workspace "$workspace_id" --format '%{app-name}' 2>/dev/null | sort -u)
+  # Get workspace info and extract bundle IDs
+  workspace_info=$(rift-cli query workspaces 2>/dev/null | jq -r --arg workspace "$workspace_id" '.[] | select(.name == $workspace)')
+
+  if [ -z "$workspace_info" ] || [ "$workspace_info" = "null" ]; then
+    # Workspace not found, set default appearance
+    sketchybar --set space.$workspace_id label.drawing=off
+    return
+  fi
+
+  # Extract unique bundle IDs from the workspace
+  apps=$(echo "$workspace_info" | jq -r '.windows[].bundle_id' | sort -u)
 
   icon_strip=""
   if [ -n "$apps" ] && [ "$apps" != "" ]; then
     while IFS= read -r app; do
-      if [ -n "$app" ]; then
+      if [ -n "$app" ] && [ "$app" != "null" ]; then
         __icon_map "$app"
         icon_strip+=" $icon_result"
       fi
@@ -42,7 +51,7 @@ update_workspace_windows() {
 
 # Update all workspaces
 update_all_workspace_windows() {
-  workspaces=$(aerospace list-workspaces --all 2>/dev/null)
+  workspaces=$(rift-cli query workspaces 2>/dev/null | jq -r '.[] | .name')
   for workspace in $workspaces; do
     update_workspace_windows "$workspace"
   done
@@ -52,26 +61,26 @@ update_all_workspace_windows() {
 handle_workspace_change() {
   # Update the previous workspace if provided
   if [ -n "$PREV_WORKSPACE" ]; then
-    echo "$(date): Updating previous workspace: $PREV_WORKSPACE" >> /tmp/aerospace-windows-debug.log
+    echo "$(date): Updating previous workspace: $PREV_WORKSPACE" >> /tmp/rift-windows-debug.log
     update_workspace_windows "$PREV_WORKSPACE"
   fi
 
   # Update the current focused workspace if provided
   if [ -n "$FOCUSED_WORKSPACE" ]; then
-    echo "$(date): Updating focused workspace: $FOCUSED_WORKSPACE" >> /tmp/aerospace-windows-debug.log
+    echo "$(date): Updating focused workspace: $FOCUSED_WORKSPACE" >> /tmp/rift-windows-debug.log
     update_workspace_windows "$FOCUSED_WORKSPACE"
   fi
 
   # If neither is provided, fallback to updating all workspaces
   if [ -z "$PREV_WORKSPACE" ] && [ -z "$FOCUSED_WORKSPACE" ]; then
-    echo "$(date): No workspace info provided, updating all workspaces" >> /tmp/aerospace-windows-debug.log
+    echo "$(date): No workspace info provided, updating all workspaces" >> /tmp/rift-windows-debug.log
     update_all_workspace_windows
   fi
 }
 
 # Main logic based on SENDER and arguments
 case "$SENDER" in
-"aerospace_workspace_change")
+"rift_workspace_change")
   # Handle workspace change event - update previous and current workspace efficiently
   handle_workspace_change
   ;;

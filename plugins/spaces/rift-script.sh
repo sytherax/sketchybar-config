@@ -7,12 +7,12 @@ WORKSPACE_ID=${1:-${NAME#space.}}
 export RELPATH=$(dirname $0)/../..
 
 # Debug: Always log when script is called
-echo "$(date): Script called with SENDER='$SENDER' NAME='$NAME' WORKSPACE_ID='$WORKSPACE_ID'" >> /tmp/aerospace-script-debug.log
+echo "$(date): Script called with SENDER='$SENDER' NAME='$NAME' WORKSPACE_ID='$WORKSPACE_ID'" >> /tmp/rift-script-debug.log
 
 update() {
   # Get current focused workspace if not provided
   if [ -z "$FOCUSED_WORKSPACE" ]; then
-    FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused 2>/dev/null)
+    FOCUSED_WORKSPACE=$(rift-cli query workspaces 2>/dev/null | jq -r '.[] | select(.is_active == true) | .name')
   fi
 
   # Check if this workspace is the focused one
@@ -35,11 +35,11 @@ update() {
 update_all_workspaces() {
   # Get current focused workspace if not provided
   if [ -z "$FOCUSED_WORKSPACE" ]; then
-    FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused 2>/dev/null)
+    FOCUSED_WORKSPACE=$(rift-cli query workspaces 2>/dev/null | jq -r '.[] | select(.is_active == true) | .name')
   fi
 
   # Get all existing workspaces dynamically
-  workspaces=$(aerospace list-workspaces --all 2>/dev/null)
+  workspaces=$(rift-cli query workspaces 2>/dev/null | jq -r '.[] | .name')
 
   # Update all workspace items with the current focused workspace
   for workspace in $workspaces; do
@@ -53,16 +53,19 @@ update_all_workspaces() {
 
 mouse_clicked() {
   if [ "$BUTTON" = "right" ]; then
-    # Aerospace doesn't support destroying workspaces the same way as yabai
-    # This would be a no-op or could trigger a custom action
-    echo "Right click on aerospace workspace not supported"
+    # Rift supports workspace management - could implement workspace deletion here
+    echo "Right click on rift workspace - could implement workspace actions"
   else
-    # Focus the aerospace workspace
-    aerospace workspace "$WORKSPACE_ID" 2>/dev/null
+    # Get the workspace index for switching (rift requires numeric index)
+    WORKSPACE_INDEX=$(rift-cli query workspaces 2>/dev/null | jq -r --arg name "$WORKSPACE_ID" '.[] | select(.name == $name) | .index')
+    if [ -n "$WORKSPACE_INDEX" ] && [ "$WORKSPACE_INDEX" != "null" ]; then
+      # Focus the rift workspace using index
+      rift-cli execute workspace switch "$WORKSPACE_INDEX" 2>/dev/null
 
-    # Update highlighting for all workspaces after click (since exec-on-workspace-change isn't working)
-    FOCUSED_WORKSPACE="$WORKSPACE_ID"
-    update_all_workspaces
+      # Update highlighting for all workspaces after click
+      FOCUSED_WORKSPACE="$WORKSPACE_ID"
+      update_all_workspaces
+    fi
   fi
 }
 
@@ -70,17 +73,17 @@ case "$SENDER" in
 "mouse.clicked")
   mouse_clicked
   ;;
-"aerospace_workspace_change")
+"rift_workspace_change")
   # Debug: Log what we receive
-  echo "$(date): aerospace_workspace_change called for $NAME with FOCUSED_WORKSPACE='$FOCUSED_WORKSPACE' PREV_WORKSPACE='$PREV_WORKSPACE'" >> /tmp/aerospace-script-debug.log
+  echo "$(date): rift_workspace_change called for $NAME with FOCUSED_WORKSPACE='$FOCUSED_WORKSPACE' PREV_WORKSPACE='$PREV_WORKSPACE'" >> /tmp/rift-script-debug.log
   # For global workspace change events, update all workspace items
   update_all_workspaces
   # Update window indicators with event-aware handling, passing both workspace variables
-  SENDER="$SENDER" FOCUSED_WORKSPACE="$FOCUSED_WORKSPACE" PREV_WORKSPACE="$PREV_WORKSPACE" $RELPATH/plugins/spaces/aerospace-windows.sh
+  SENDER="$SENDER" FOCUSED_WORKSPACE="$FOCUSED_WORKSPACE" PREV_WORKSPACE="$PREV_WORKSPACE" $RELPATH/plugins/spaces/rift-windows.sh
   ;;
 *)
   update
   # Update window indicators for this workspace
-  $RELPATH/plugins/spaces/aerospace-windows.sh "$WORKSPACE_ID"
+  $RELPATH/plugins/spaces/rift-windows.sh "$WORKSPACE_ID"
   ;;
 esac
