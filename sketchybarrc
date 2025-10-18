@@ -59,11 +59,11 @@ X_BAR_PADDING=12
 case ${BAR_LOOK} in
 "plain")
 	BAR_HEIGHT=34
-	BAR_MARGIN=4
+	BAR_MARGIN=5
 	if [ $(echo $OS_VERSION | awk -F. '{print $1}') -gt 15 ]; then
-		BAR_CORNER_RADIUS=14
+		BAR_CORNER_RADIUS=15
 	else
-		BAR_CORNER_RADIUS=12
+		BAR_CORNER_RADIUS=13
 	fi
 	;;
 "compact")
