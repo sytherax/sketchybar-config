@@ -127,7 +127,7 @@ CPU_UPDATE_FREQ=2       # Seconds between CPU graph samples
 MENUBAR_AUTOHIDE=True   # Whether to automatically hide the menu titles
 GITHUB_TOKEN="~/.github_token" # Path to your GitHub Classic token (for notifications)
 WIFI_UNREDACTOR="~/Applications/wifi-unredactor.app" # Wifi unredactor path
-AEROSPACE_MODE=False    # Enable aerospace window manager integration
+BAR_LOOK="plain"        # Aspect of the bar 
 ```
 
 Usage order of precedence:
@@ -236,6 +236,7 @@ An opinionated module integrating this repo as a flake input :
 </details>
 
 ## Troubleshooting
+- Menu Bar items like `volume`, `wifi`, `bluetooth`, etc are not clickable (not working on macOS 26) : Ensure the items are present in the macOS native Menu Bar so that the program can simulate a click on the item.
 - CPU not showing: Ensure `cpu.sh` is sourced (it is by default) and run `sketchybar --query item graph.percent` to verify presence.
 - Music overlapping notch: Bump `NOTCH_WIDTH` in small increments (e.g. +10) or reduce `MUSIC_INFO_WIDTH`.
 - Config not applied: Echo inside your `config.sh` or run `grep NOTCH_WIDTH ~/.config/sketchybar/sketchybarrc` to confirm dynamic variable usage.
