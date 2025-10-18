@@ -69,16 +69,16 @@ or alternatively https://github.com/Kcraft059/Nix-Config/blob/master/home/darwin
 
 ## Aerospace Integration
 
-Aerospace window manager is now supported! Enable it by setting `AEROSPACE_MODE=True` in your `config.sh`.
+Aerospace window manager is now supported!
 
-### Setup for Aerospace
+### Choosing a window manager
 
-1. Enable aerospace mode in your `config.sh`:
+1. You can let the config auto detect your window-manger or force it in `config.sh`: 
 ```bash
-AEROSPACE_MODE=True
+WINDOW_MANAGER="aerospace" # supported "yabai" and "aerospace" defaults to "" which is auto-detect
 ```
 
-1. Add the following to your `~/.config/aerospace/aerospace.toml`:
+1. For aerospace, add the following to your `~/.config/aerospace/aerospace.toml`:
 ```toml
 # Add this anywhere in your aerospace.toml file
 # IMPORTANT: Must be an array format, NOT using exec-and-forget

@@ -1,6 +1,6 @@
 #!/bin/bash
-export RELPATH=$(dirname $0)/../..
-source "$RELPATH/../icon_map.sh"
+export RELPATH=$(dirname $0)/../../..
+source "$RELPATH/icon_map.sh"
 
 if [ "$SENDER" = "space_windows_change" ]; then
 	space="$(echo "$INFO" | jq -r '.space')"
@@ -18,15 +18,18 @@ if [ "$SENDER" = "space_windows_change" ]; then
 		done <<<"${apps}"
 		sketchybar --set space.$space label="$icon_strip" label.drawing=on
 
-		if [ "$(sketchybar --query space.$space | jq -r .icon.highlight)" != "on" ]; then
-			sketchybar --set space.$space background.drawing=on
+		visible_spaces=($(yabai -m query --spaces | jq -r '.[] | select(.["is-visible"] == true) | .index'))
+
+		# No background if space visible
+		if [[ " ${visible_spaces[*]} " =~ $space ]]; then
+			sketchybar --set space.$space label="$icon_strip" label.drawing=on background.drawing=off
 		else 
-			sketchybar --set space.$space background.drawing=off
+			sketchybar --set space.$space label="$icon_strip" label.drawing=on background.drawing=on
 		fi
 
 	else
 		### If there's no active apps, don't sohw label
 		icon_strip=" -"
-		sketchybar --set space.$space label.drawing=off background.drawing=off
+		sketchybar --set space.$space label.drawing=off background.drawing=off 
 	fi
 fi

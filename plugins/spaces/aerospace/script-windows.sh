@@ -22,7 +22,9 @@ update_workspace_windows() {
 		done <<<"${apps}"
     sketchybar --set space.$workspace_id label="$icon_strip" label.drawing=on
 
-		if [ $(sketchybar --query space.$workspace_id | jq -r .icon.highlight) != "on" ];then 
+		FOCUSED_WORKSPACE=$(aerospace list-workspaces --focused 2>/dev/null)
+
+		if ! [ "$FOCUSED_WORKSPACE" = "$workspace_id" ];then 
 			sketchybar --set space.$workspace_id background.drawing=on
 		else 
 			sketchybar --set space.$workspace_id background.drawing=off
@@ -36,7 +38,7 @@ update_workspace_windows() {
 }
 
 # Update all workspaces
-update_all_workspace_windows() { # For performance issues all items should not be upadted at once
+update_all_workspace_windows() {
   workspaces=$(aerospace list-workspaces --all 2>/dev/null)
   for workspace in $workspaces; do
     update_workspace_windows "$workspace"
@@ -47,7 +49,7 @@ update_all_workspace_windows() { # For performance issues all items should not b
 if [ -n "$1" ]; then
   # Update specific workspace
   update_workspace_windows "$1"
-#else
-#  # Update all workspaces
-#  update_all_workspace_windows
+else
+  # Update all workspaces
+  update_all_workspace_windows
 fi

@@ -4,7 +4,8 @@
 WORKSPACE_ID=${1:-${NAME#space.}}
 
 # Set RELPATH for accessing other scripts
-export RELPATH=$(dirname $0)/../..
+export RELPATH=$(dirname $0)/../../..
+source $RELPATH/set_colors.sh
 
 # Debug: Always log when script is called -> will be introduced later
 # echo "$(date): Script called with SENDER='$SENDER' NAME='$NAME' WORKSPACE_ID='$WORKSPACE_ID'" >> /tmp/aerospace-script-debug.log
@@ -21,13 +22,17 @@ update() {
 	fi
 
 	WIDTH="dynamic"
+	#BACKGROUND=on
 	if [ "$SELECTED" = "true" ]; then
 		WIDTH="0"
+		#BACKGROUND=off
 	fi
 
 	sketchybar --animate tanh 20 --set $NAME \
-							icon.highlight=$SELECTED \
-							label.width=$WIDTH
+		icon.highlight=$SELECTED \
+		label.width=$WIDTH #\
+		#background.drawing=$BACKGROUND
+
 }
 
 update_all_workspaces() {
@@ -80,8 +85,9 @@ case "$SENDER" in
 	# $RELPATH/spaces/aerospace/script-windows.sh
 # ;;
 *)
+	# Update focused state
 	update
-	# Update window indicators for this workspace
-	$RELPATH/spaces/aerospace/script-windows.sh "$WORKSPACE_ID"
+	# Update icons
+	$RELPATH/plugins/spaces/aerospace/script-windows.sh $1
 	;;
 esac
