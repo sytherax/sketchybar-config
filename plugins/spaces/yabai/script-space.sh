@@ -1,13 +1,15 @@
 #!/bin/bash
+export RELPATH=$(dirname $0)/../..
+
 update() {
   WIDTH="dynamic"
-  BACKGROUND="on"
   if [ "$SELECTED" = "true" ]; then
     WIDTH="0"
-    BACKGROUND="off"
   fi
 
-  sketchybar --animate tanh 20 --set $NAME icon.highlight=$SELECTED label.width=$WIDTH background.drawing=$BACKGROUND
+  sketchybar --animate tanh 20 --set $NAME icon.highlight=$SELECTED label.width=$WIDTH
+
+	$RELPATH/spaces/yabai/script-windows.sh
 }
 
 mouse_clicked() {

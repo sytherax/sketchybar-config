@@ -27,7 +27,7 @@ fi
 : "${MENUBAR_AUTOHIDE:=True}"
 : "${GITHUB_TOKEN:="~/.github_token"}"
 : "${WIFI_UNREDACTOR:="~/Applications/wifi-unredactor.app"}"
-: "${AEROSPACE_MODE:=False}"
+: "${WINDOW_MANAGER:="yabai"}"
 
 [ ${#MENU_CONTROLS[@]} -eq 0 ] && MENU_CONTROLS=(
   "Control__Center,Bluetooth"
