@@ -21,15 +21,15 @@ if [ "$SENDER" = "space_windows_change" ]; then
 		visible_spaces=($(yabai -m query --spaces | jq -r '.[] | select(.["is-visible"] == true) | .index'))
 
 		# No background if space visible
-		if [[ " ${visible_spaces[*]} " =~ $space ]]; then
+		if [[ "${visible_spaces[*]}" =~ "$space" ]]; then
 			sketchybar --set space.$space label="$icon_strip" label.drawing=on background.drawing=off
-		else 
+		else
 			sketchybar --set space.$space label="$icon_strip" label.drawing=on background.drawing=on
 		fi
 
 	else
 		### If there's no active apps, don't sohw label
 		icon_strip=" -"
-		sketchybar --set space.$space label.drawing=off background.drawing=off 
+		sketchybar --set space.$space label.drawing=off background.drawing=off
 	fi
 fi

@@ -17,7 +17,7 @@ update() {
 
 	if [ "$SELECTED" = "true" ]; then
 		WIDTH="0"
-		#BACKGROUND=off
+		sketchybar --set $NAME background.drawing=off
 	fi
 
 	sketchybar --animate tanh 20 --set $NAME icon.highlight=$SELECTED label.width=$WIDTH #background.drawing=$BACKGROUND
