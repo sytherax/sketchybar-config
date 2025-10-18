@@ -35,6 +35,12 @@ fi
 # : "${FORCE_WM:="""}" # <""|"yabai"|"aerospace">
 # : "${BAR_LOOK:="plain"}" # <"plain"|"compact">
 
+# WM detect if not already defined
+if [ -z $WINDOW_MANAGER ]; then
+	if command -v aerospace >/dev/null; then WINDOW_MANAGER="aerospace"; fi
+	if command -v yabai >/dev/null; then WINDOW_MANAGER="yabai"; fi
+fi
+
 [ ${#MENU_CONTROLS[@]} -eq 0 ] && MENU_CONTROLS=(
 	"Control__Center,Bluetooth"
 )

@@ -33,3 +33,6 @@ COLOR_SCHEME="rosepine-moon"
 BAR_TRANSPARENCY=false
 BAR_LOOK="compact" 
 THEME_FILE_PATH="$HOME/.config/sketchybar-config/theme.sh"
+
+# Force a specific window manager
+WINDOW_MANAGER="aerospace"
